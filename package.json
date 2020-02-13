@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc --noEmit && jest"
+  },
+  "private": true,
+  "license": "ISC",
+  "devDependencies": {
+    "@actions/core": "^1.2.2",
+    "@actions/github": "^2.1.0",
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.1",
+    "jest": "^25.1.0",
+    "js-yaml": "^3.13.1",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.5"
+  }
+}
