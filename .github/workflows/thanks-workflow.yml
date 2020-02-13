@@ -13,4 +13,5 @@ jobs:
       - uses: ./.github/actions/thanks-action
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          THANKS_ACTION_TOKEN: ${{ secrets.THANKS_ACTION_TOKEN }}
         id: thanks
