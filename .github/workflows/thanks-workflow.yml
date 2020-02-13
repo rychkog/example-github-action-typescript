@@ -1,0 +1,16 @@
+name: 'Thanks Workflow'
+on:
+  issues:
+    types: ['opened']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
+      - uses: ./.github/actions/thanks-action
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: thanks
