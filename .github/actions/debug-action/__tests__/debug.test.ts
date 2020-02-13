@@ -2,6 +2,8 @@ import * as core from '@actions/core'
 import run from '../debug'
 import fs from 'fs'
 import yaml from 'js-yaml'
+import * as github from '@actions/github'
+import { WebhookPayload } from '@actions/github/lib/interfaces'
 
 beforeEach(() => {
   jest.resetModules()
@@ -10,6 +12,13 @@ beforeEach(() => {
     const envVar = `INPUT_${name.replace(/ /g, '_').toUpperCase()}`
     process.env[envVar] = doc.inputs[name]['default']
   })
+
+  github.context.payload = {
+    pusher: {
+      name: 'mona',
+      type: ''
+    },
+  } as WebhookPayload
 })
 
 afterEach(() => {
@@ -25,13 +34,13 @@ describe('debug action debug message', () => {
     const debugMock = jest.spyOn(core, 'debug')
 
     await run()
-    expect(debugMock).toHaveBeenCalledWith('👋 Hello! You are an amazing person! 🙌')
+    expect(debugMock).toHaveBeenCalledWith('👋 Hello mona! You are an amazing person! 🙌')
   })
 
   it('sets the action output', async () => {
     const setOutputMock = jest.spyOn(core, 'setOutput')
     await run()
-    expect(setOutputMock).toHaveBeenCalledWith('amazing-message', '👋 Hello! You are an amazing person! 🙌')
+    expect(setOutputMock).toHaveBeenCalledWith('amazing-message', '👋 Hello mona! You are an amazing person! 🙌')
   })
 
   it('does not output debug messages for non-amazing creatures', async () => {

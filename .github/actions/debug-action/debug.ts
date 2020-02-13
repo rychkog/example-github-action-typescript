@@ -1,4 +1,5 @@
 import * as core from '@actions/core'
+import * as github from '@actions/github'
 
 const run = async (): Promise<void> => {
   try {
@@ -9,7 +10,9 @@ const run = async (): Promise<void> => {
       return
     }
 
-    const message = `👋 Hello! You are an amazing ${creature}! 🙌`
+    const pusher = github.context.payload.pusher && github.context.payload.pusher.name
+    
+    const message = `👋 Hello ${pusher}! You are an amazing ${creature}! 🙌`
     core.debug(message)
     core.setOutput('amazing-message', message)
   } catch (error) {

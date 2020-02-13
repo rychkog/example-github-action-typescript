@@ -1,4 +1,4 @@
 {
-  // "editor.formatOnSave": false,
-  // "eslint.format.enable": false
+  "editor.formatOnSave": false,
+  "eslint.enable": false
 }
