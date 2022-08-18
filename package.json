@@ -7,7 +7,7 @@
   "private": true,
   "license": "ISC",
   "devDependencies": {
-    "@actions/core": "^1.2.2",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^2.1.0",
     "@types/jest": "^25.1.2",
     "@types/js-yaml": "^3.12.2",
